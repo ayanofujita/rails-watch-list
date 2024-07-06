@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-start">
+    <h1><%= link_to "Lists", lists_path %> > <%= @list.name %></h1>
+    <%= link_to new_list_bookmark_path(@list) do %>
+      <button class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+    <% end %>
+  </div>
+
+  <h2>Movies</h2>
+  <div class="d-flex flex-wrap">
+
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.where(movie: movie, list: @list).first %>
+      <div class="card m-2 text-white bg-info" style="width: 18rem;">
+        <div class="card-body bg-light">
+          <p class="card-text text-dark font-weight-bold">" <%= bookmark.comment %> "</p>
+        </div>
+        <%= image_tag movie.poster_url, alt: "text" %>
+
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0"><%= movie.title %></h5>
+            <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
+          <p class="card-text"><small class="text-light">
+            <i class="fa-solid fa-star"></i> <%= movie.rating %>
+          </small></p>
+          <p class="card-text"><%= movie.overview %></p>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>

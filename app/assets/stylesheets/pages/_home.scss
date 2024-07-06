@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+body {
+  color: white;
+}
+
+h1 > a {
+  text-decoration: none;
+  color: white;
+  opacity: 0.5;
+}
+
+a, p {
+  text-decoration: none;
+  color: white;
+}
+
+h1 {
+  font-weight: bolder;
+}

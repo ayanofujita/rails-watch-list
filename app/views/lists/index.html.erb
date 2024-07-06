@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'home_banner.jpg', alt: "text" %>);">
+  <div class="container">
+  <h1>Watchlists</h1>
+    <h3>All of your favorites in one place.</h3>
+    <%= link_to new_list_path do %>
+      <button class="btn btn-primary">Create List</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="container my-4">
+  <h2>My lists</h2>
+  <div class="d-flex flex-wrap">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card bg-dark text-white text-center m-2" style="width: 180px;">
+          <%= image_tag list.image, alt: "text" %>
+          <div class="card-img-overlay">
+            <h3 class="card-title"><%= list.name %></h3>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
