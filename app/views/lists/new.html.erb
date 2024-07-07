@@ -1,6 +1,6 @@
 <div class="container my-5">
   <h1>
-    <%= link_to "Lists", lists_path %> >
+    <%= link_to "Lists >", lists_path %>
     Create
   </h1>
   <div class="row justify-content-center">
@@ -9,7 +9,8 @@
       <%= simple_form_for(@list) do |f| %>
         <%= f.input :name %>
         <%= f.input :image, as: :file %>
-        <%= f.submit %>
+        <%= f.input :creator %>
+        <%= f.submit "Add List", class: "btn btn-info" %>
       <% end %>
     </div>
   </div>

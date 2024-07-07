@@ -1,0 +1,37 @@
+.card {
+  border: none;
+}
+
+#lists {
+  .card-body {
+    padding: 0;
+    color: white;
+
+    div {
+      opacity: .6;
+    }
+  }
+}
+
+#movies {
+  .card {
+    color: white;
+  }
+  .card-title {
+    font-weight: bolder;
+    margin-right: 4px;
+  }
+
+  #overview, #rating {
+    font-size: 14px;
+    opacity: .6;
+  }
+
+  #rating {
+    margin-top: 3px;
+  }
+
+  a {
+    color: white;
+  }
+}

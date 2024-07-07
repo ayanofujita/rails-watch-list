@@ -3,17 +3,18 @@ body {
   color: white;
 }
 
-h1 > a {
-  text-decoration: none;
-  color: white;
-  opacity: 0.5;
-}
-
 a, p {
   text-decoration: none;
-  color: white;
 }
 
-h1 {
+h1, h2, h3, h5 {
   font-weight: bolder;
+}
+
+h1 a {
+  color: $main3;
+}
+
+.form-control, .form-select, label {
+  color: white !important;
 }

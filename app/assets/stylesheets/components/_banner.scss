@@ -7,7 +7,7 @@
     margin: 0;
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-size: 32px;
+    font-size: 48px;
     font-weight: bold;
   }
 
@@ -15,21 +15,7 @@
     font-size: 20px;
     color: white;
     opacity: .8;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 3px rgba(173, 173, 173, 0.8);
+    font-weight: lighter;
   }
-}
-
-.card-category {
-  background-size: cover;
-  background-position: center;
-  height: 180px;
-  width: 180px;  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }

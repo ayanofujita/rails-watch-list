@@ -1,7 +1,7 @@
 <div class="container my-5">
   <h1>
-    <%= link_to "Lists", lists_path %> >
-    <%= link_to @list.name, list_path(@list) %> >
+    <%= link_to "Lists >", lists_path %>
+    <%= link_to "#{@list.name} >", list_path(@list) %>
     Add
   </h1>
   <div class="row justify-content-center">
@@ -10,7 +10,7 @@
       <%= simple_form_for([@list, @bookmark]) do |f| %>
         <%= f.input :comment %>
         <%= f.association :movie %>
-        <%= f.submit "Add", class: "btn btn-primary" %>
+        <%= f.submit "Add Movie", class: "btn btn-info" %>
       <% end %>
     </div>
   </div>
