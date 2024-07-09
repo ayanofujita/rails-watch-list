@@ -6,12 +6,20 @@
   .card-body {
     padding: 0;
     color: white;
-
-    div {
-      opacity: .6;
-    }
+    opacity: .6;
   }
+  .card {
+    margin: 1rem;
+  }
+
+  overflow-x: auto;
+  max-width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
 }
+}
+
 
 #movies {
   .card {
@@ -34,4 +42,21 @@
   a {
     color: white;
   }
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 286px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding:.5rem;
 }

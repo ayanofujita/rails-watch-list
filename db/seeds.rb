@@ -31,7 +31,7 @@ seed_array.each do |genre|
         overview: movie["overview"],
         poster_url: "https://image.tmdb.org/t/p/w200#{movie["poster_path"]}",
         rating: movie["vote_average"].ceil(1),
-        backdrop_url: "https://image.tmdb.org/t/p/w200#{movie["backdrop_path"]}",
+        backdrop_url: "https://image.tmdb.org/t/p/w500#{movie["backdrop_path"]}",
         genre: genre[:genre]
       )
     end

@@ -10,28 +10,26 @@
 
 <div class="container my-5">
   <h2>My lists</h2>
-  <div class="d-flex flex-wrap" id="lists">
+
+  <div class="d-flex" id="lists">
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <div class="card m-2" style="width: 18rem;">
-          <% if list.image.attached? %>
-            <%= image_tag list.image, alt: "text", size: '286x180' %>
-          <% else %>
-            <%= image_tag 'home_banner.jpg', alt: "text", size: '286x180' %>
-          <% end %>
-          <div class="card-body pt-2">
-            <h5 class="card-title"><%= list.name %></h5>
-            <div class="d-flex justify-content-between">
-              <% if list.creator  %>
-                <p class="card-text m-0">by: <%= list.creator %></p>
-              <% else %>
-                <p></p>
-              <% end %>
-              <p class="m-0"><i class="fa-solid fa-comment"></i> <%= list.reviews.count %></p>
-            </div>
+        <% img = list.image.attached? ? url_for(list.image) : image_path('home_banner.jpg') %>
+        <div class="card">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= img %>)">
+            <%= list.name %>
+          </div>
+          <div class="card-body d-flex justify-content-between">
+            <% unless list.creator == ("" || null) %>
+              <p class="card-text m-0">by: <%= list.creator %></p>
+            <% else %>
+              <p></p>
+            <% end %>
+            <p class="m-0"><i class="fa-solid fa-comment"></i> <%= list.reviews.count %></p>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
+
 </div>
