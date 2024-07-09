@@ -14,7 +14,7 @@
   <div class="d-flex" id="lists">
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <% img = list.image.attached? ? url_for(list.image) : image_path('home_banner.jpg') %>
+        <% img = list.image.attached? ? cl_image_path(list.image.key) : image_path('home_banner.jpg') %>
         <div class="card">
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= img %>)">
             <%= list.name %>
