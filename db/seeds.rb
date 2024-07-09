@@ -18,7 +18,10 @@ Bookmark.destroy_all
 Movie.destroy_all
 puts "db cleared"
 
-seed_array = [{genre: "horror", id: 27}, {genre: "music", id: 10402}, {genre: "mystery", id: 9648}]
+seed_array = [
+  {genre: "horror", id: 27, image: "https://res.cloudinary.com/dzfjdlafz/image/upload/v1720525828/ao5xjldiw66z9v4tq9l0.jpg"},
+  {genre: "music", id: 10402, image: "https://res.cloudinary.com/dzfjdlafz/image/upload/v1720525945/v0khp3r03nhhs2y9spxp.jpg"},
+  {genre: "mystery", id: 9648, image: "https://res.cloudinary.com/dzfjdlafz/image/upload/v1720526023/n9rfhywtpcwvjkf6hpnd.jpg"}]
 
 seed_array.each do |genre|
   puts "creating #{genre[:genre]} movies"
@@ -57,6 +60,6 @@ seed_array.each do |genre|
     end
   end
   puts "created bookmarks"
-
-  List.last.image.attach(io: File.open("/home/ayafujita/code/ayanofujita/rails-watch-list/app/assets/images/#{genre[:genre]}.jpg"), filename: "#{genre[:genre]}.jpg")
+  file = URI.open(genre[:image])
+  List.last.image.attach(io: file, filename: "#{genre[:genre]}.jpg")
 end
