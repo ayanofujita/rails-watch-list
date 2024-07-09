@@ -10,6 +10,7 @@ require 'open-uri'
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# 0128e3a038858e8ef64aa5880d13e2ce
 
 puts 'cleaning db'
 List.destroy_all
