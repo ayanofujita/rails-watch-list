@@ -58,7 +58,7 @@
 
       <h3>Reviews (<%= @list.reviews.count %>)</h3>
       <hr>
-      <div style="height: 200px; overflow-y: auto;">
+      <div style="height: 200px; overflow-y: auto;" id="reviews">
         <% @list.reviews.each do |review| %>
           <p class="mb-0">
             <% review.rating.to_i.times do %>
