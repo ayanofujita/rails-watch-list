@@ -17,13 +17,13 @@
 
   &::-webkit-scrollbar {
     display: none;
-}
+  }
 }
 
 
 #movies {
   .card {
-    color: white;
+    color: black;
   }
   .card-title {
     font-weight: bolder;
@@ -59,4 +59,12 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding:.5rem;
+}
+
+#reviews {
+  height: 200px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

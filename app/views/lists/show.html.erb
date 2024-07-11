@@ -1,37 +1,78 @@
 <div class="container my-5">
   <div class="d-flex justify-content-between align-items-start">
     <h1><%= link_to "Lists >", root_path %> <%= @list.name %></h1>
-    <%= link_to new_list_bookmark_path(@list) do %>
-      <button class="btn btn-info"><i class="fa-solid fa-plus"></i></button>
-    <% end %>
   </div>
 
-  <h2 class="my-4">Movies</h2>
-  <div class="d-flex flex-wrap" id="movies">
+  <div class="d-flex justify-content-between">
+    <div class="me-5">
+      <h3 class="my-4">Movies (<%= @list.movies.count %>)</h3>
+      <hr>
+      <div class="d-flex flex-wrap" id="movies">
+        <% @list.movies.each do |movie| %>
+          <% bookmark = Bookmark.where(movie: movie, list: @list).first %>
 
-    <% @list.movies.each do |movie| %>
-      <% bookmark = Bookmark.where(movie: movie, list: @list).first %>
-
-      <div class="card m-2 bg-primary" style="width: 22rem;">
-        <%= image_tag movie.backdrop_url, alt: "text" %>
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <p class="card-title"><%= movie.title %></p>
-            <p class="card-text flex-grow-1" id="rating">
-              ● <%= movie.rating %> <i class="fa-solid fa-star text-warning"></i>
-            </p>
-            <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
+          <div class="card m-2 bg-primary" style="width: 22rem;">
+            <%= image_tag movie.backdrop_url, alt: "text" %>
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <p class="card-title"><%= movie.title %></p>
+                <p class="card-text flex-grow-1" id="rating">
+                  ● <%= movie.rating %> <i class="fa-solid fa-star text-warning"></i>
+                </p>
+                <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </div>
+              <p class="card-text" id="overview">
+                <%= movie.overview.length < 235 ? movie.overview : movie.overview.first(235) + "..." %>
+              </p>
+            </div>
+            <div class="p-3">
+              <p class="card-text"><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></p>
+            </div>
           </div>
-          <p class="card-text" id="overview">
-            <%= movie.overview.length < 235 ? movie.overview : movie.overview.first(235) + "..." %>
-          </p>
-        </div>
-        <div class="p-3">
-          <p class="card-text"><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></p>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+
+    <div>
+      <h3 class="my-4">Add a Movie</h3>
+      <hr>
+      <div class="mb-5" style="min-width: 15rem; width: 18rem; height: fit-content;">
+        <%= simple_form_for([@list, @bookmark]) do |f| %>
+        <%= f.input :comment %>
+        <%= f.association :movie %>
+        <%= f.submit "Add Movie", class: "btn btn-info" %>
+        <% end %>
+      </div>
+
+      <h3>Leave a Review</h3>
+      <hr>
+      <div class="mb-5" style="min-width: 15rem; width: 18rem; height: fit-content;">
+        <%= simple_form_for [@list, @review] do |f| %>
+        <%= f.input :comment %>
+        <%= f.input :rating %>
+        <%= f.submit 'Create Review', class: "btn btn-info" %>
+        <% end %>
+      </div>
+
+      <h3>Reviews (<%= @list.reviews.count %>)</h3>
+      <hr>
+      <div style="height: 200px; overflow-y: auto;">
+        <% @list.reviews.each do |review| %>
+          <p class="mb-0">
+            <% review.rating.to_i.times do %>
+              <i class="fa-solid fa-star text-warning"></i>
+            <% end %>
+            <% time_diff = (Time.now - review.created_at) / 60.0 %>
+            <% text = time_diff < 1 ? "less than a minute ago" : "#{time_diff.to_i} minutes ago"%>
+            <em style="opacity: .5;"><%= text %></em>
+          </p>
+          <p>"<%= review.comment %>"</p>
+          <hr style="opacity: .1;">
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
