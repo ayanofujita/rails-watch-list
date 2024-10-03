@@ -61,6 +61,4 @@ seed_array.each do |genre|
   puts "created bookmarks"
   file = URI.open(genre[:image])
   List.last.image.attach(io: file, filename: "#{genre[:genre]}.jpg")
-
-
 end

@@ -5,4 +5,5 @@ class List < ApplicationRecord
   has_many :movies, through: :bookmarks, dependent: :destroy
   validates :name, presence: true
   validates :name, uniqueness: true
+  validates :name, length: { maximum: 40 }
 end
