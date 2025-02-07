@@ -10,7 +10,7 @@ With that in mind, I'm working on Version 2, where I aim to address these limita
 
 ![screenshot](https://github.com/user-attachments/assets/e826c8db-6f61-4662-9f6f-c6d676eb7995)
 
-App home: https://old-aya-watchlist-20fde36147bd.herokuapp.com/
+App home: https://old-aya-watchlist-ba13f4b7059b.herokuapp.com/
 <br>
 v2: https://watch-list-v2-08a859a1db81.herokuapp.com/
 ## Getting Started
