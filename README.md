@@ -8,7 +8,7 @@ During development, I had many ideas for additional features, such as authentica
 
 With that in mind, I'm working on Version 2, where I aim to address these limitations and expand the feature set. You can check out the progress here: [Watchlist v2](https://old-aya-watchlist-20fde36147bd.herokuapp.com/)
 
-![screenshot of homepage]
+![screenshot](https://github.com/user-attachments/assets/e826c8db-6f61-4662-9f6f-c6d676eb7995)
 
 App home: https://old-aya-watchlist-20fde36147bd.herokuapp.com/
 <br>
